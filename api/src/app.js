@@ -2,8 +2,6 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-const pokemonsRoute = require("./routes/pokemons.js");
-const typesRoute = require("./routes/types.js");
 
 require("./db.js");
 
@@ -26,8 +24,8 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use("/pokemons", pokemonsRoute);
-server.use("/types", typesRoute);
+//All routes
+require("./routes/index.js")(server);
 
 // Error catching endware.
 server.use((err, req, res, next) => {

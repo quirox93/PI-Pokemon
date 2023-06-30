@@ -1,13 +1,13 @@
 const { getTypes } = require("../controllers/getTypes");
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 
 router.get("/", async (req, res) => {
   try {
     const types = await getTypes();
     res.status(200).json(types);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const status = error.response?.status || 500;
+    res.status(status).json({ error: error.message });
   }
 });
 

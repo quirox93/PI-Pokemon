@@ -1,0 +1,41 @@
+.cardContainer {
+  visibility: hidden;
+  position: absolute;
+  width: 70%;
+  height: 46%;
+  background-color: green;
+  bottom: 30%;
+  left: 50%;
+  transform: translate(-55%, 0);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-around;
+  padding: 1%;
+ 
+}
+
+.cardContainer article {
+  
+  background-color: lightblue;
+  height: 10%;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  width: 45%;
+  border: solid;
+  border-width: 0.1em;
+  margin: 0.2em;
+  padding: 1%;
+}
+
+.cardContainer article label {
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+.cardContainer article img {
+  height: 90%;
+}

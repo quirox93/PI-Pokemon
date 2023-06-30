@@ -1,19 +1,19 @@
-export const ADD_FAV = "ADD_FAV";
+export const GET_POKEMONS = "GET_POKEMONS";
 export const REMOVE_FAV = "REMOVE_FAV";
 export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 
 import axios from "axios";
 const URL = import.meta.env.VITE_BACKEND_URL;
-// ACTION | addFav
-export const addFav = (character) => {
-  const endpoint = URL + "/rickandmorty/fav";
+
+export const getAllPokemons = () => {
+  const endpoint = URL + "/pokemons";
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(endpoint, character);
+      const { data } = await axios.get(endpoint);
       console.log(data);
       return dispatch({
-        type: "ADD_FAV",
+        type: "GET_POKEMONS",
         payload: data,
       });
     } catch (error) {
@@ -45,4 +45,4 @@ export const orderCards = (ord) => {
   return { type: ORDER, payload: ord };
 };
 
-export default { addFav, removeFav, filterCards, orderCards };
+export default { getAllPokemons, removeFav, filterCards, orderCards };

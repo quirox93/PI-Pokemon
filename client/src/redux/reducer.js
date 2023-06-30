@@ -1,26 +1,17 @@
-import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from "./actions";
+import { GET_POKEMONS, ORDER } from "./actions";
 
 const initalState = {
-  myFavorites: [],
-  allCharacters: [],
+  filterPokemons: [],
+  allPokemons: [],
+  createdPokemons: [],
+  types: [],
 };
 const rootReducer = (state = initalState, { type, payload }) => {
   const sortFn = (a, b) => (payload === "A" ? a.id - b.id : b.id - a.id);
-  const filterFn = ({ gender }) => gender === payload;
-  const all = state.allCharacters;
+  const all = state.allPokemons;
 
   const actions = {
-    [ADD_FAV]: {
-      ...state,
-      myFavorites: payload,
-      allCharacters: payload,
-    },
-    [REMOVE_FAV]: {
-      ...state,
-      myFavorites: payload,
-      allCharacters: payload,
-    },
-    [FILTER]: { ...state, myFavorites: all.filter(filterFn) },
+    [GET_POKEMONS]: { ...state, allPokemons: payload },
     [ORDER]: { ...state, myFavorites: [...all].sort(sortFn) },
   };
 
