@@ -1,4 +1,7 @@
 .App {
   text-align: center;
-  font-size: 4rem;
+}
+@font-face {
+  font-family: pokedexFont;
+  src: url(pokedexFont.ttf);
 }

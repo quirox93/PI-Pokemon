@@ -1,46 +1,36 @@
+/* eslint-disable react/prop-types */
+import { useSelector } from "react-redux";
 import s from "./Cards.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllPokemons } from "../../redux/actions";
-import { useLayoutEffect, useRef, useState, useEffect } from "react";
-const Cards = () => {
-  const allPokemons = useSelector((state) => state.allPokemons).slice(0, 12);
-  const ref = useRef(null);
+import { Link } from "react-router-dom";
+import typeColor from "../../utils/typesColor";
 
-  const [width, setWidth] = useState(0);
+const Cards = (props) => {
+  const width = useSelector((state) => state.width);
+  const fontSize = width / 38 + "px";
 
-  useLayoutEffect(() => {
-    setWidth(ref.current?.clientWidth);
-  }, [ref.current?.clientWidth]);
-
-  useEffect(() => {
-    function handleWindowResize() {
-      setWidth(ref.current.clientWidth);
-    }
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
-  const fontSize = width / 22 + "px";
-
-  const mapPokemons = allPokemons.map((e, i) => {
+  const mapPokemons = props.allPokemons.map((e, i) => {
+    let bColor = typeColor[e.tipo[0]];
+    if (e.tipo[1])
+      bColor = `linear-gradient(90deg, ${typeColor[e.tipo[0]]} , ${
+        typeColor[e.tipo[1]]
+      } )`;
     return (
-      <article style={{ fontSize }} key={i}>
-        <img src={e.animacion}></img>
-        <label>{e.nombre}</label>
-      </article>
+      <Link
+        style={{ fontSize, boxShadow: "0 0 0 0.1em " + bColor }}
+        to={"/detail/" + e.id}
+        key={i}
+      >
+        <img src={e.animacion || e.imagen}></img>
+        <p>{e.nombre}</p>
+      </Link>
     );
   });
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllPokemons());
-  }, []);
 
   return (
-    <div ref={ref} className={s.cardContainer}>
-      {mapPokemons.length ? mapPokemons : mapPokemons}
+    <div className={s.cardsContainer} style={{ width: width, height: width }}>
+      <div className={s.pantalla}>
+        {mapPokemons.length ? mapPokemons : mapPokemons}
+      </div>
     </div>
   );
 };

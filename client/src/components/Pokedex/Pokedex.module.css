@@ -1,0 +1,67 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  place-content: center;
+  place-items: center;
+}
+.pokedexSvg {
+  height: 100%;
+  max-width: 100%;
+}
+.cardsContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+.cardsContainer * {
+  visibility: initial;
+}
+
+.leftStickOn {
+  transform: translateY(0.3%) rotateY(6deg);
+}
+
+.rightStickOn {
+  transform: translateY(0.3%) rotateY(6deg) scaleX(1.01);
+}
+
+.gridStick {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-130%, -25%);
+  scale: 0.2;
+  display: flex;
+  visibility: hidden;
+}
+.leftStick {
+  width: 50%;
+  visibility: initial;
+}
+
+.rightStick {
+  width: 50%;
+  visibility: initial;
+}
+.info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-70%, 650%);
+  display: flex;
+}
+
+.info label {
+  font-size: 1.5em;
+}
+.leftStickOn {
+  transform: translateY(0.3%) rotateY(6deg);
+}
+
+.rigthStickOn {
+  transform: translateY(0.3%) rotateY(6deg) scaleX(1.01);
+}

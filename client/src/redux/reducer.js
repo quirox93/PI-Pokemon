@@ -1,18 +1,18 @@
-import { GET_POKEMONS, ORDER } from "./actions";
+import { GET_POKEMONS, UPDATE_WIDTH, UPDATE_STICK } from "./actions";
 
 const initalState = {
   filterPokemons: [],
   allPokemons: [],
   createdPokemons: [],
   types: [],
+  stick: 0,
+  width: 0,
 };
 const rootReducer = (state = initalState, { type, payload }) => {
-  const sortFn = (a, b) => (payload === "A" ? a.id - b.id : b.id - a.id);
-  const all = state.allPokemons;
-
   const actions = {
     [GET_POKEMONS]: { ...state, allPokemons: payload },
-    [ORDER]: { ...state, myFavorites: [...all].sort(sortFn) },
+    [UPDATE_WIDTH]: { ...state, width: payload },
+    [UPDATE_STICK]: { ...state, stick: payload },
   };
 
   return actions[type] ?? { ...state };

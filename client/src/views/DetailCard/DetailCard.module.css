@@ -1,0 +1,86 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  place-content: center;
+  place-items: center;
+}
+.cardsContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+.cardsContainer * {
+  visibility: initial;
+}
+.background {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  width: 53%;
+  height: 12.5%;
+  top: 15%;
+  left: 25.2%;
+  transition: opacity ease 1s;
+  animation: spawnOpacity 0.5s;
+}
+.background img {
+  width: 100%;
+  transition: opacity ease 1s;
+  animation: spawnOpacity 0.5s;
+  box-shadow: 0 0 0 0.2em black;
+}
+.stats {
+  margin-top: 0.2em;
+  box-shadow: 0 0 0 0.2em black;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.stats label {
+  padding: 2% 0%;
+  width: 50%;
+  height: 10%;
+  font-size: 0.7em;
+  font-family: pokedexFont;
+}
+
+.sprite {
+  position: absolute;
+  width: 20%;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  transition: all ease 1s;
+  animation: spawn 2s;
+}
+@keyframes spawnOpacity {
+  from {
+    opacity: 0%;
+  }
+
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes spawn {
+  from {
+    transform: translate(-50%, -50%) scale(0.1);
+
+    filter: brightness(0%) invert(1);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    filter: brightness(100%) invert(0);
+  }
+}

@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
       const pokemons = await getPokemon.byName(name);
       return res.status(200).json(pokemons);
     }
-
     const pokemons = await getPokemon.all();
     res.status(200).json(pokemons);
   } catch (error) {
@@ -35,8 +34,9 @@ router.get("/:idPokemon", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const data = req.body;
-   
-    if (!validatePost(data)) return res.status(400).json({ error: "Faltan datos." });
+
+    if (!validatePost(data))
+      return res.status(400).json({ error: "Faltan datos." });
     const pokemons = await createPokemon(data);
 
     res.status(200).json(pokemons);
@@ -45,7 +45,6 @@ router.post("/", async (req, res) => {
     res.status(status).json({ error: error.message });
   }
 });
-
 
 const validatePost = (data) =>
   data.nombre &&

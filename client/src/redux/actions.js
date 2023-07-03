@@ -1,5 +1,7 @@
 export const GET_POKEMONS = "GET_POKEMONS";
 export const REMOVE_FAV = "REMOVE_FAV";
+export const UPDATE_STICK = "UPDATE_STICK";
+export const UPDATE_WIDTH = "UPDATE_WIDTH";
 export const FILTER = "FILTER";
 export const ORDER = "ORDER";
 
@@ -22,27 +24,11 @@ export const getAllPokemons = () => {
   };
 };
 
-export const removeFav = (access, id) => {
-  const endpoint = URL + "/rickandmorty/fav/" + access + "/" + id;
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.delete(endpoint);
-      return dispatch({
-        type: "REMOVE_FAV",
-        payload: data,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+export const updateStick = (payload) => {
+  return { type: UPDATE_STICK, payload };
+};
+export const updateWidth = (payload) => {
+  return { type: UPDATE_WIDTH, payload };
 };
 
-export const filterCards = (gender) => {
-  return { type: FILTER, payload: gender };
-};
-
-export const orderCards = (ord) => {
-  return { type: ORDER, payload: ord };
-};
-
-export default { getAllPokemons, removeFav, filterCards, orderCards };
+export default { getAllPokemons, updateStick, updateWidth };
