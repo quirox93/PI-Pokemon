@@ -21,7 +21,7 @@ const formatData = (data) => {
 };
 
 const all = async () => {
-  const { data } = await axios.get(pokeApi + "?limit=151&offset=0.");
+  const { data } = await axios.get(pokeApi + "?limit=20&offset=0.");
   const getPokemon = (e) => byName(e.name);
   const allPokemons = data.results.map(getPokemon);
   const allData = await Promise.all(allPokemons);
