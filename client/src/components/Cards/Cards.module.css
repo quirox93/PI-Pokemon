@@ -7,7 +7,7 @@
 }
 .pantalla {
   transition: all 1s ease;
-  background-color: black;
+  background-color: white;
   position: relative;
   width: 54%;
   height: 54%;
@@ -36,19 +36,9 @@
   flex-direction: column;
   align-content: space-around;
   justify-content: space-around;
-  padding: 1%;
+  padding: 1em;
 }
 
-@keyframes slidein {
-  from {
-    transform: translate(-47%, 0) scale(0.1);
-    border-radius: 100%;
-  }
-
-  to {
-    transform: translate(-47%, 0) scale(1);
-  }
-}
 .pantalla a {
   opacity: 90%;
   text-decoration: none;
@@ -63,8 +53,7 @@
   transition: all 0.5s ease;
   animation-name: smooth;
   animation-duration: 1s;
-
-  box-shadow: 0 0 0 0.1em white;
+  box-shadow: 0 0 0 0.1em black;
 }
 
 .pantalla a:hover {
@@ -79,8 +68,8 @@
     opacity: 90%;
   }
 }
-
-.pantalla a p {
+/*nombre del pokemon */
+.name {
   font-family: pokedexFont;
   font-size: 0.7em;
   text-align: center;
@@ -89,6 +78,29 @@
   font-weight: bolder;
   color: black;
 }
+.rightContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+
+.icons img {
+  transition: all ease 1s;
+  display: none;
+  height: 0%;
+}
+/*Necesito cambiar el display de icons a flex cuando se activa el hover de .rightContainer*/
+.pantalla a:hover .icons img {
+  display: initial;
+  transition: all ease 1s;
+  animation: smooth 1s;
+}
+.pantalla a:hover .name {
+  margin-bottom: 0.5em;
+}
+/*sprite del pokemon */
 .pantalla a img {
   height: 2em;
 }

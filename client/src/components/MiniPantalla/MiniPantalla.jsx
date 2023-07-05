@@ -6,7 +6,10 @@ const MiniPantalla = ({ text }) => {
   const width = useSelector((state) => state.width);
 
   return (
-    <div style={{ fontSize: width / 28 }} className={s.info}>
+    <div
+      style={{ fontSize: width / 28, width: width, height: width }}
+      className={s.container}
+    >
       <label>{text}</label>
     </div>
   );

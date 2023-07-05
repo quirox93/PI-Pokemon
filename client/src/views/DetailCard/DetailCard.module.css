@@ -54,8 +54,11 @@
 
 .sprite {
   position: absolute;
-  width: 20%;
-  top: 30%;
+  width: 7.5em;
+  max-width: 7.5em;
+  max-height: 7.5em;
+  object-fit: contain;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
 

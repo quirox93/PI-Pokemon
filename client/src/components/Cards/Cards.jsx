@@ -2,26 +2,25 @@
 import { useSelector } from "react-redux";
 import s from "./Cards.module.css";
 import { Link } from "react-router-dom";
-import typeColor from "../../utils/typesColor";
+import typeIcon from "../../utils/typesIcon";
 
 const Cards = (props) => {
   const width = useSelector((state) => state.width);
   const fontSize = width / 38 + "px";
 
   const mapPokemons = props.allPokemons.map((e, i) => {
-    let bColor = typeColor[e.tipo[0]];
-    if (e.tipo[1])
-      bColor = `linear-gradient(90deg, ${typeColor[e.tipo[0]]} , ${
-        typeColor[e.tipo[1]]
-      } )`;
+    const typeIcon1 = typeIcon[e.tipo[0]];
+    const typeIcon2 = typeIcon[e.tipo[1]];
     return (
-      <Link
-        style={{ fontSize, boxShadow: "0 0 0 0.1em " + bColor }}
-        to={"/detail/" + e.id}
-        key={i}
-      >
+      <Link style={{ fontSize }} to={"/detail/" + e.id} key={i}>
         <img src={e.animacion || e.imagen}></img>
-        <p>{e.nombre}</p>
+        <div className={s.rightContainer}>
+          <p className={s.name}>{e.nombre}</p>
+          <div className={s.icons}>
+            <img src={typeIcon1} />
+            {typeIcon2 && <img src={typeIcon2} />}
+          </div>
+        </div>
       </Link>
     );
   });

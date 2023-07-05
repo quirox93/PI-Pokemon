@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import s from "./Pokedex.module.css";
 import { useLayoutEffect, useRef, useEffect } from "react";
 import { updateWidth } from "../../redux/actions";
+import { Link } from "react-router-dom";
 const Pokedex = (props) => {
   const ref = useRef(null);
   const stick = useSelector((state) => state.stick);
@@ -30,6 +31,18 @@ const Pokedex = (props) => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
+
+  const ajustesButton = (
+    <Link to={"/home/opciones"}>
+      <ellipse
+        cx={325.58}
+        cy={398.56}
+        className="cls-7"
+        rx={12.66}
+        ry={12.69}
+      />
+    </Link>
+  );
 
   return (
     <svg
@@ -202,13 +215,7 @@ const Pokedex = (props) => {
               strokeWidth: 2,
             }}
           />
-          <ellipse
-            cx={325.58}
-            cy={398.56}
-            className="cls-7"
-            rx={12.66}
-            ry={12.69}
-          />
+          {ajustesButton}
           <path
             d="M461.84 388.7h52.28a1.25 1.25 0 0 0 0-2.5h-52.28a1.24 1.24 0 0 0-1.23 1.27 1.23 1.23 0 0 0 1.23 1.23ZM514.12 401.29h-52.28a1.25 1.25 0 0 0 0 2.49h52.28a1.25 1.25 0 0 0 0-2.49ZM514.12 408.83h-52.28a1.25 1.25 0 0 0 0 2.49h52.28a1.25 1.25 0 0 0 0-2.49ZM514.12 393.75h-52.28a1.25 1.25 0 0 0 0 2.49h52.28a1.25 1.25 0 0 0 0-2.49Z"
             className="cls-2"

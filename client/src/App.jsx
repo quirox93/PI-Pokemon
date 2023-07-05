@@ -18,7 +18,12 @@ function App() {
       {
         <Routes>
           <Route path="/" element={<Landing />}></Route>
-          <Route path="/home" element={<Home />}></Route>
+          <Route exact path="/home" element={<Home />}></Route>
+          <Route
+            exact
+            path="/home/opciones"
+            element={<Home opciones={true} />}
+          ></Route>
           <Route path="/detail/:id" element={<DetailCard />}></Route>
         </Routes>
       }

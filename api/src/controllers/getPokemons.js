@@ -11,7 +11,7 @@ const formatData = (data) => {
     ataque: data.stats[1].base_stat,
     defensa: data.stats[2].base_stat,
     velocidad: data.stats[5].base_stat,
-    imagen: data.sprites.other.home.front_default,
+    imagen: data.sprites.front_default,
     animacion:
       data.sprites.versions["generation-v"]["black-white"]["animated"]
         .front_default,
@@ -21,7 +21,7 @@ const formatData = (data) => {
 };
 
 const all = async () => {
-  const { data } = await axios.get(pokeApi + "?limit=700&offset=0.");
+  const { data } = await axios.get(pokeApi + "?limit=151&offset=0.");
   const getPokemon = (e) => byName(e.name);
   const allPokemons = data.results.map(getPokemon);
   const allData = await Promise.all(allPokemons);
