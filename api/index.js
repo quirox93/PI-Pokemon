@@ -24,7 +24,7 @@ const { setTypes } = require("./src/controllers/getTypes.js");
 // Syncing all the models at once.
 conn
   .sync({ force: true })
-  .then(setTypes)
+  //.then(setTypes)
   .then(() => {
     server.listen(3001, () => {
       console.log("Server ready."); // eslint-disable-line no-console
