@@ -4,6 +4,10 @@ const pokeApi = "https://pokeapi.co/api/v2/";
 
 const getTypes = async () => {
   const types = await Type.findAll();
+  if (!types.length) {
+    await setTypes();
+    return await Type.findAll();
+  }
   return types;
 };
 
