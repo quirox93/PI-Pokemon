@@ -1,48 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
-import { useDispatch, useSelector } from "react-redux";
 import s from "./Pokedex.module.css";
-import { useLayoutEffect, useRef, useEffect } from "react";
-import { updateWidth } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import usePokedex from "./usePokedex";
+
 const Pokedex = (props) => {
-  const ref = useRef(null);
-  const stick = useSelector((state) => state.stick);
-
-  let stickSTyle = "";
-  if (stick === 1) stickSTyle = s.leftStickOn;
-  if (stick === 2) stickSTyle = s.rigthStickOn;
-  const dispatch = useDispatch();
-  const setWidth = (width) => {
-    dispatch(updateWidth(width));
-  };
-  useLayoutEffect(() => {
-    setWidth(ref.current?.clientWidth);
-  }, [ref.current?.clientWidth]);
-
-  useEffect(() => {
-    function handleWindowResize() {
-      setWidth(ref.current?.clientWidth);
-    }
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
-
-  const ajustesButton = (
-    <Link to={"/home/opciones"}>
-      <ellipse
-        cx={325.58}
-        cy={398.56}
-        className="cls-7"
-        rx={12.66}
-        ry={12.69}
-      />
-    </Link>
-  );
+  //Hook personalizado que maneja funcionalidades de la pokedex
+  const { ref, sticks, optionsButton, homeButton, searchButton } = usePokedex(props, s);
 
   return (
     <svg
@@ -50,7 +11,6 @@ const Pokedex = (props) => {
       className={s.pokedexSvg}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="200 0 400 600"
-      {...props}
     >
       <defs>
         <style>
@@ -108,13 +68,7 @@ const Pokedex = (props) => {
               strokeWidth: 2,
             }}
           />
-          <ellipse
-            cx={345.54}
-            cy={62.67}
-            className="cls-7"
-            rx={7.53}
-            ry={7.64}
-          />
+          <ellipse cx={345.54} cy={62.67} className="cls-7" rx={7.53} ry={7.64} />
           <ellipse
             cx={371.03}
             cy={62.67}
@@ -169,13 +123,8 @@ const Pokedex = (props) => {
             className="cls-13"
             transform="rotate(-67.5 294.758 452.861)"
           />
-          <circle
-            cx={296.91}
-            cy={450.71}
-            r={17.38}
-            className="cls-14"
-            transform="rotate(-67.5 296.907 450.714)"
-          />
+          {homeButton}
+          {searchButton}
           <path
             d="M330.69 455h39.1c2.16 0 3.91-2 3.91-4.52S372 446 369.79 446h-39.1c-2.16 0-3.91 2-3.91 4.51s1.75 4.49 3.91 4.49Z"
             className="cls-7"
@@ -193,10 +142,7 @@ const Pokedex = (props) => {
             d="M529.15 469.38H506.5v-22.64a1.74 1.74 0 0 0-1.73-1.74h-17.34c-1 0-4.34 3.95-4.34 4.9v19.48h-20c-1 0-4.35 3.95-4.35 4.91v17.33a1.74 1.74 0 0 0 1.74 1.74h22.65V516a1.74 1.74 0 0 0 1.73 1.73h17.34c1 0 4.34-3.94 4.34-4.9v-19.47h20c1 0 4.35-3.94 4.35-4.9v-17.34a1.74 1.74 0 0 0-1.74-1.74Z"
             className="cls-13"
           />
-          <path
-            d="M529.15 469.38H506.5v-22.64a1.74 1.74 0 0 0-1.73-1.74h-17.34a1.74 1.74 0 0 0-1.74 1.74v22.64h-22.64a1.74 1.74 0 0 0-1.74 1.74v17.34a1.73 1.73 0 0 0 1.74 1.73h22.64v22.65a1.74 1.74 0 0 0 1.74 1.74h17.34a1.74 1.74 0 0 0 1.73-1.74v-22.65h22.65a1.73 1.73 0 0 0 1.74-1.73v-17.34a1.74 1.74 0 0 0-1.74-1.74Z"
-            className={stickSTyle + " cls-14"}
-          />
+          {sticks}
           <path
             d="M523.6 138.4h-234a9.15 9.15 0 0 0-7.41 3.8c-2.54 1.52-5.25 6.3-5.25 9.48V391a8.72 8.72 0 0 0 2.54 6.15l25.66 26.73.3.27.71.73a8.61 8.61 0 0 0 6.13 2.55h207.31c3.17 0 7.94-2.71 9.45-5.26a9.21 9.21 0 0 0 3.77-7.42V147.6a9.2 9.2 0 0 0-9.21-9.2Z"
             style={{
@@ -215,25 +161,13 @@ const Pokedex = (props) => {
               strokeWidth: 2,
             }}
           />
-          {ajustesButton}
+          {optionsButton}
           <path
             d="M461.84 388.7h52.28a1.25 1.25 0 0 0 0-2.5h-52.28a1.24 1.24 0 0 0-1.23 1.27 1.23 1.23 0 0 0 1.23 1.23ZM514.12 401.29h-52.28a1.25 1.25 0 0 0 0 2.49h52.28a1.25 1.25 0 0 0 0-2.49ZM514.12 408.83h-52.28a1.25 1.25 0 0 0 0 2.49h52.28a1.25 1.25 0 0 0 0-2.49ZM514.12 393.75h-52.28a1.25 1.25 0 0 0 0 2.49h52.28a1.25 1.25 0 0 0 0-2.49Z"
             className="cls-2"
           />
-          <ellipse
-            cx={397.33}
-            cy={146.29}
-            className="cls-18"
-            rx={3.16}
-            ry={3.17}
-          />
-          <ellipse
-            cx={415.91}
-            cy={146.29}
-            className="cls-18"
-            rx={3.16}
-            ry={3.17}
-          />
+          <ellipse cx={397.33} cy={146.29} className="cls-18" rx={3.16} ry={3.17} />
+          <ellipse cx={415.91} cy={146.29} className="cls-18" rx={3.16} ry={3.17} />
           <path
             d="M533.25 43.5h-257.5a15.33 15.33 0 0 0-15.25 15.41v473.18a15.33 15.33 0 0 0 15.25 15.41h257.5a15.33 15.33 0 0 0 15.25-15.41V58.91a15.33 15.33 0 0 0-15.25-15.41Z"
             className="cls-11"

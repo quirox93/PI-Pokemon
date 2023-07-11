@@ -1,14 +1,14 @@
 import Pokedex from "../../components/Pokedex/Pokedex";
 import Cards from "../../components/Cards/Cards";
-import Opciones from "../../components/Opciones/Opciones";
+import Options from "../../components/Options/Options";
 import s from "./Home.module.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import SticksControl from "../../components/SticksControl/SticksControl";
-import MiniPantalla from "../../components/MiniPantalla/MiniPantalla";
+import MiniScreen from "../../components/MiniScreen/MiniScreen";
 
-const Home = ({ opciones }) => {
-  const allPokemons = useSelector((state) => state.allPokemons);
+const Home = ({ options }) => {
+  const { filteredPokemons } = useSelector((state) => state);
+
   const [page, setPage] = useState(1);
   const handleLeftClick = () => {
     if (page > 1) setPage(page - 1);
@@ -19,17 +19,15 @@ const Home = ({ opciones }) => {
 
   return (
     <div className={s.container}>
-      <Pokedex />
-      {opciones ? (
-        <Opciones />
+      <Pokedex handleRightClick={handleRightClick} handleLeftClick={handleLeftClick} />
+
+      {options ? (
+        <Options />
       ) : (
-        <Cards allPokemons={allPokemons.slice(12 * (page - 1), 12 * page)} />
+        <Cards allPokemons={filteredPokemons.slice(12 * (page - 1), 12 * page)} />
       )}
-      <SticksControl
-        handleRightClick={handleRightClick}
-        handleLeftClick={handleLeftClick}
-      />
-      <MiniPantalla text={opciones ? "Opciones" : "Página " + page} />
+
+      <MiniScreen text={options ? "Opciones" : "Página " + page} />
     </div>
   );
 };

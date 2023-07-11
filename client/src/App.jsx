@@ -19,11 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />}></Route>
           <Route exact path="/home" element={<Home />}></Route>
-          <Route
-            exact
-            path="/home/opciones"
-            element={<Home opciones={true} />}
-          ></Route>
+          <Route exact path="/home/options" element={<Home options={true} />}></Route>
           <Route path="/detail/:id" element={<DetailCard />}></Route>
         </Routes>
       }

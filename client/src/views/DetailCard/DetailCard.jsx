@@ -5,8 +5,7 @@ import background from "./../../utils/allBackgrounds";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SticksControl from "../../components/SticksControl/SticksControl";
-import MiniPantalla from "../../components/MiniPantalla/MiniPantalla";
+import MiniScreen from "../../components/MiniScreen/MiniScreen";
 const URL = import.meta.env.VITE_BACKEND_URL;
 
 const DetailCard = () => {
@@ -37,37 +36,29 @@ const DetailCard = () => {
   useEffect;
   return (
     <div style={{ fontSize: width / 28 }} className={s.container}>
-      <Pokedex />
+      <Pokedex handleLeftClick={handleLeftClick} handleRightClick={handleRightClick} />
       <div className={s.cardsContainer} style={{ width: width, height: width }}>
         {pokemon && (
           <>
             <div className={s.background}>
               <img src={background[pokemon.tipo[0]]} />
               <div className={s.stats}>
-                <label name="vida">VID {pokemon.vida}</label>
-                <label name="ataque">ATQ {pokemon.ataque}</label>
-                <label name="altura">{pokemon.altura / 10} m</label>
-                <label name="defensa">DEF {pokemon.defensa}</label>
-                <label name="velocidad">VEL {pokemon.velocidad}</label>
-                <label name="peso">{pokemon.peso / 10} kg</label>
+                <label>VID {pokemon.vida}</label>
+                <label>ATQ {pokemon.ataque}</label>
+                <label>{pokemon.altura / 10} m</label>
+                <label>DEF {pokemon.defensa}</label>
+                <label>VEL {pokemon.velocidad}</label>
+                <label>{pokemon.peso / 10} kg</label>
               </div>
             </div>
 
             {pokemon.id === actualId && (
-              <img
-                src={pokemon.animacion || pokemon.imagen}
-                className={s.sprite}
-              />
+              <img src={pokemon.animacion || pokemon.imagen} className={s.sprite} />
             )}
           </>
         )}
       </div>
-
-      <SticksControl
-        handleRightClick={handleRightClick}
-        handleLeftClick={handleLeftClick}
-      />
-      <MiniPantalla text={"#" + actualId} />
+      <MiniScreen text={"#" + actualId} />
     </div>
   );
 };

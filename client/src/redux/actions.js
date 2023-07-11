@@ -1,9 +1,8 @@
 export const GET_POKEMONS = "GET_POKEMONS";
 export const REMOVE_FAV = "REMOVE_FAV";
-export const UPDATE_STICK = "UPDATE_STICK";
 export const UPDATE_WIDTH = "UPDATE_WIDTH";
-export const FILTER = "FILTER";
-export const ORDER = "ORDER";
+export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
+export const SORT = "SORT";
 
 import axios from "axios";
 const URL = import.meta.env.VITE_BACKEND_URL;
@@ -13,7 +12,6 @@ export const getAllPokemons = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
-      console.log(data);
       return dispatch({
         type: "GET_POKEMONS",
         payload: data,
@@ -24,11 +22,22 @@ export const getAllPokemons = () => {
   };
 };
 
-export const updateStick = (payload) => {
-  return { type: UPDATE_STICK, payload };
-};
 export const updateWidth = (payload) => {
   return { type: UPDATE_WIDTH, payload };
 };
 
-export default { getAllPokemons, updateStick, updateWidth };
+export const sortPokemons = (payload) => {
+  return { type: SORT, payload };
+};
+
+
+export const filterByType = (payload) => {
+  return { type: FILTER_BY_TYPE, payload };
+};
+
+export default {
+  getAllPokemons,
+  updateWidth,
+  sortPokemons,
+  filterByType,
+};

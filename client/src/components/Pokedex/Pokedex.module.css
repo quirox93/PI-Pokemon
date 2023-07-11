@@ -10,58 +10,39 @@
   height: 100%;
   max-width: 100%;
 }
-.cardsContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  visibility: hidden;
-}
-.cardsContainer * {
-  visibility: initial;
-}
 
+.sticks {
+  transition: all 0.2s ease;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
 .leftStickOn {
-  transform: translateY(0.3%) rotateY(6deg);
+  transform: translateX(-2%) rotateY(-20deg);
 }
 
 .rightStickOn {
-  transform: translateY(0.3%) rotateY(6deg) scaleX(1.01);
+  transform: translateX(2%) rotateY(20deg);
 }
 
-.gridStick {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-130%, -25%);
-  scale: 0.2;
-  display: flex;
-  visibility: hidden;
-}
-.leftStick {
-  width: 50%;
-  visibility: initial;
+.upStickOn {
+  transform: scale(0.95) translateY(-2%) rotateX(20deg);
 }
 
-.rightStick {
-  width: 50%;
-  visibility: initial;
+.downStickOn {
+  transform: scale(1.05) translateY(3%) rotateX(-20deg);
 }
-.info {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-70%, 650%);
-  display: flex;
+.homeIcon {
+  opacity: 80%;
+  transition: filter 0.3s ease-in-out;
 }
-
-.info label {
-  font-size: 1.5em;
-}
-.leftStickOn {
-  transform: translateY(0.3%) rotateY(6deg);
+.homeIcon:hover {
+  filter: invert();
 }
 
-.rigthStickOn {
-  transform: translateY(0.3%) rotateY(6deg) scaleX(1.01);
+.optionsIcon {
+  opacity: 90%;
+  transition: filter 0.3s ease-in-out;
+}
+.optionsIcon:hover {
+  filter: invert();
 }

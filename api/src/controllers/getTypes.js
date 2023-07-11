@@ -1,6 +1,6 @@
 const { Type } = require("./../db");
 const axios = require("axios");
-const pokeApi = "https://pokeapi.co/api/v2/";
+const { pokeApi } = require("./utils");
 
 const getTypes = async () => {
   const types = await Type.findAll();
@@ -27,6 +27,5 @@ const setTypes = async () => {
 
 module.exports = {
   getTypes,
-
   setTypes,
 };

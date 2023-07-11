@@ -1,21 +1,30 @@
-import { GET_POKEMONS, UPDATE_WIDTH, UPDATE_STICK } from "./actions";
+import { GET_POKEMONS, UPDATE_WIDTH, FILTER_BY_TYPE, SORT } from "./actions";
+import functions from "./utils";
 
 const initalState = {
-  filterPokemons: [],
+  filteredPokemons: [],
   allPokemons: [],
   createdPokemons: [],
   types: [],
-  stick: 0,
   width: 0,
+  sortMode: (a, b) => a.id - b.id,
 };
-const rootReducer = (state = initalState, { type, payload }) => {
+
+const rootReducer = (state = initalState, action) => {
+  const { type, payload } = action;
+  const { filterByType, sortFunction } = functions(state, payload);
+
   const actions = {
-    [GET_POKEMONS]: { ...state, allPokemons: payload },
-    [UPDATE_WIDTH]: { ...state, width: payload },
-    [UPDATE_STICK]: { ...state, stick: payload },
+    [GET_POKEMONS]: { allPokemons: payload, filteredPokemons: payload },
+    [UPDATE_WIDTH]: { width: payload },
+    [FILTER_BY_TYPE]: filterByType,
+    [SORT]: sortFunction,
   };
 
-  return actions[type] ?? { ...state };
+  return {
+    ...state,
+    ...(typeof actions[type] === "function" ? actions[type]() : actions[type]),
+  };
 };
 
 export default rootReducer;
