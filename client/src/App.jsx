@@ -4,13 +4,14 @@ import Home from "./views/Home/Home.jsx";
 import Landing from "./views/Landing/Landing.jsx";
 import DetailCard from "./views/DetailCard/DetailCard";
 import { useDispatch } from "react-redux";
-import { getAllPokemons } from "./redux/actions";
+import { getAllPokemons, getTypes } from "./redux/actions";
 import { useEffect } from "react";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPokemons());
+    dispatch(getTypes());
   }, []);
 
   return (

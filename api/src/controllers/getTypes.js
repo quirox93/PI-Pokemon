@@ -4,11 +4,7 @@ const { pokeApi } = require("./utils");
 
 const getTypes = async () => {
   const types = await Type.findAll();
-  if (!types.length) {
-    await setTypes();
-    return await Type.findAll();
-  }
-  return types;
+  return types.map((e) => e.name);
 };
 
 const setTypes = async () => {
@@ -18,7 +14,7 @@ const setTypes = async () => {
     const { data } = await axios.get(pokeApi + "type");
 
     const mapTypes = data.results.map(({ name }) => {
-      return { nombre: name };
+      return { name };
     });
     await Type.bulkCreate(mapTypes);
     console.log("Types created");

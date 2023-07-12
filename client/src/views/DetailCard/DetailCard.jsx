@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Pokedex from "./../../components/Pokedex/Pokedex";
 import s from "./DetailCard.module.css";
-import background from "./../../utils/allBackgrounds";
+import background from "./../../typeBackground";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -41,19 +41,19 @@ const DetailCard = () => {
         {pokemon && (
           <>
             <div className={s.background}>
-              <img src={background[pokemon.tipo[0]]} />
+              <img src={background[pokemon.type[0]]} />
               <div className={s.stats}>
-                <label>VID {pokemon.vida}</label>
-                <label>ATQ {pokemon.ataque}</label>
-                <label>{pokemon.altura / 10} m</label>
-                <label>DEF {pokemon.defensa}</label>
-                <label>VEL {pokemon.velocidad}</label>
-                <label>{pokemon.peso / 10} kg</label>
+                <label>VID {pokemon.hp}</label>
+                <label>ATQ {pokemon.atk}</label>
+                <label>{pokemon.height / 10} m</label>
+                <label>DEF {pokemon.def}</label>
+                <label>VEL {pokemon.spd}</label>
+                <label>{pokemon.weight / 10} kg</label>
               </div>
             </div>
 
             {pokemon.id === actualId && (
-              <img src={pokemon.animacion || pokemon.imagen} className={s.sprite} />
+              <img src={pokemon.gif || pokemon.sprite} className={s.sprite} />
             )}
           </>
         )}

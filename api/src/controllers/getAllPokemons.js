@@ -7,7 +7,7 @@ const getData = (e) => getPokemonByIdOrName(e.name);
 const getAllPokemons = async () => {
   const { data } = await axios.get(pokeApi + "pokemon", {
     params: {
-      limit: 151,
+      limit: 21,
       offset: 0,
     },
   });

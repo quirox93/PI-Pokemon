@@ -2,20 +2,20 @@
 import { useSelector } from "react-redux";
 import s from "./Cards.module.css";
 import { Link } from "react-router-dom";
-import typeIcon from "../../utils/typesIcon";
+import typeIcon from "./../../typesIcons";
 
 const Cards = (props) => {
   const width = useSelector((state) => state.width);
   const fontSize = width / 38 + "px";
 
   const mapPokemons = props.allPokemons.map((e, i) => {
-    const typeIcon1 = typeIcon[e.tipo[0]];
-    const typeIcon2 = typeIcon[e.tipo[1]];
+    const typeIcon1 = typeIcon[e.type[0]];
+    const typeIcon2 = typeIcon[e.type[1]];
     return (
       <Link style={{ fontSize }} to={"/detail/" + e.id} key={i}>
-        <img src={e.animacion || e.imagen}></img>
+        <img src={e.gif || e.sprite}></img>
         <div className={s.rightContainer}>
-          <p className={s.name}>{e.nombre}</p>
+          <p className={s.name}>{e.name}</p>
           <div className={s.icons}>
             <img src={typeIcon1} />
             {typeIcon2 && <img src={typeIcon2} />}
@@ -27,9 +27,7 @@ const Cards = (props) => {
 
   return (
     <div className={s.cardsContainer} style={{ width: width, height: width }}>
-      <div className={s.pantalla}>
-        {mapPokemons.length ? mapPokemons : mapPokemons}
-      </div>
+      <div className={s.pantalla}>{mapPokemons.length ? mapPokemons : mapPokemons}</div>
     </div>
   );
 };

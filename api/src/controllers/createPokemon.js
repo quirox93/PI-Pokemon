@@ -2,14 +2,14 @@ const { Pokemon } = require("./../db");
 
 const createPokemon = async (data) => {
   const [newPokemon] = await Pokemon.findOrCreate({
-    where: { nombre: data.nombre },
+    where: { name: data.name },
     defaults: {
-      imagen: data.imagen,
-      vida: data.vida,
-      ataque: data.ataque,
-      defensa: data.defensa,
-      velocidad: data.velocidad,
-      peso: data.altura,
+      img: data.imagen,
+      hp: data.vida,
+      atk: data.ataque,
+      def: data.defensa,
+      spd: data.velocidad,
+      height: data.altura,
     },
   });
   return newPokemon;

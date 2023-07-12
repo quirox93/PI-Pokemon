@@ -1,4 +1,4 @@
-import { GET_POKEMONS, UPDATE_WIDTH, FILTER_BY_TYPE, SORT } from "./actions";
+import { GET_POKEMONS, GET_TYPES, UPDATE_WIDTH, FILTER_BY_TYPE, SORT } from "./actions";
 import functions from "./utils";
 
 const initalState = {
@@ -16,6 +16,7 @@ const rootReducer = (state = initalState, action) => {
 
   const actions = {
     [GET_POKEMONS]: { allPokemons: payload, filteredPokemons: payload },
+    [GET_TYPES]: { types: payload },
     [UPDATE_WIDTH]: { width: payload },
     [FILTER_BY_TYPE]: filterByType,
     [SORT]: sortFunction,
