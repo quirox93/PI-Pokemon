@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import s from "./Options.module.css";
 import { filterByType } from "../../redux/actions";
 import MiniScreen from "../../components/MiniScreen/MiniScreen";
+import { useState } from "react";
 
 const Options = () => {
   const { typesOn, types, width } = useSelector((state) => state);
@@ -27,6 +28,46 @@ const Options = () => {
       </label>
     </div>
   ));
+  const [selectedOption, setSelectedOption] = useState("All");
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+  const radioButtons = (
+    <div className={s.radioInputs}>
+      <label className={s.radio}>
+        <input
+          type="radio"
+          name="radio"
+          value="All"
+          onChange={handleOptionChange}
+          checked={selectedOption === "All"}
+        />
+        <span className={s.name}>All</span>
+      </label>
+      <label className={s.radio}>
+        <input
+          type="radio"
+          name="radio"
+          value="Created"
+          onChange={handleOptionChange}
+          checked={selectedOption === "Created"}
+        />
+        <span className={s.name}>Created</span>
+      </label>
+
+      <label className={s.radio}>
+        <input
+          type="radio"
+          name="radio"
+          value="Original"
+          onChange={handleOptionChange}
+          checked={selectedOption === "Original"}
+        />
+        <span className={s.name}>Original</span>
+      </label>
+    </div>
+  );
 
   const handleLeftClick = () => {};
   const handleRightClick = () => {};
@@ -37,14 +78,15 @@ const Options = () => {
         <div className={s.background}>
           <section className={s.section}>
             <div className={s.allTypes}>{mapTypes}</div>
+            {radioButtons}
           </section>
           <section style={{ display: "none" }} className={s.section}>
             <div className={s.allTypes}>{mapTypes}</div>
           </section>
           <div className={s.tabs}>
-            <button>Filtros</button>
-            <button>Orden</button>
-            <button>Aplicar</button>
+            <button>Filter</button>
+            <button>Created</button>
+            <button>Order</button>
           </div>
         </div>
       </div>
