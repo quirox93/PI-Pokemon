@@ -1,12 +1,11 @@
 import Pokedex from "../../components/Pokedex/Pokedex";
 import Cards from "../../components/Cards/Cards";
-import Options from "../../components/Options/Options";
 import s from "./Home.module.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import MiniScreen from "../../components/MiniScreen/MiniScreen";
 
-const Home = ({ options }) => {
+const Home = () => {
   const { filteredPokemons } = useSelector((state) => state);
 
   const [page, setPage] = useState(1);
@@ -21,13 +20,9 @@ const Home = ({ options }) => {
     <div className={s.container}>
       <Pokedex handleRightClick={handleRightClick} handleLeftClick={handleLeftClick} />
 
-      {options ? (
-        <Options />
-      ) : (
-        <Cards allPokemons={filteredPokemons.slice(12 * (page - 1), 12 * page)} />
-      )}
+      <Cards allPokemons={filteredPokemons.slice(12 * (page - 1), 12 * page)} />
 
-      <MiniScreen text={options ? "Opciones" : "Página " + page} />
+      <MiniScreen text={"Página " + page} />
     </div>
   );
 };

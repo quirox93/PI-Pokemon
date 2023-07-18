@@ -8,6 +8,7 @@ const initalState = {
   types: [],
   width: 0,
   sortMode: (a, b) => a.id - b.id,
+  typesOn: [],
 };
 
 const rootReducer = (state = initalState, action) => {

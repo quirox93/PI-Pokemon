@@ -33,7 +33,6 @@ const DetailCard = () => {
     setActualId(n);
     navigate("/detail/" + n);
   };
-  useEffect;
   return (
     <div style={{ fontSize: width / 28 }} className={s.container}>
       <Pokedex handleLeftClick={handleLeftClick} handleRightClick={handleRightClick} />

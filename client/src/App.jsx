@@ -6,6 +6,7 @@ import DetailCard from "./views/DetailCard/DetailCard";
 import { useDispatch } from "react-redux";
 import { getAllPokemons, getTypes } from "./redux/actions";
 import { useEffect } from "react";
+import Options from "./views/Options/Options";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />}></Route>
           <Route exact path="/home" element={<Home />}></Route>
-          <Route exact path="/home/options" element={<Home options={true} />}></Route>
+          <Route exact path="/options" element={<Options />}></Route>
           <Route path="/detail/:id" element={<DetailCard />}></Route>
         </Routes>
       }

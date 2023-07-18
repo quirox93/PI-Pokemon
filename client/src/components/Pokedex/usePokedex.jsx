@@ -29,7 +29,7 @@ const usePokedex = (props, s) => {
     };
   }, []);
   const optionsButton = (
-    <Link to={"/home/options"}>
+    <Link to={"/options"}>
       <ellipse cx={325.58} cy={398.56} className="cls-7" rx={12.66} ry={12.69} />
       <image
         xlinkHref={optionsIcon} // Reemplaza con la ruta de tu ícono PNG o SVG
@@ -63,12 +63,7 @@ const usePokedex = (props, s) => {
 
   const searchButton = (
     <Link to={"/home"}>
-      <circle
-        cx={296.91}
-        cy={505}
-        r={17.38}
-        className="cls-14"
-      />
+      <circle cx={296.91} cy={505} r={17.38} className="cls-14" />
       <image
         xlinkHref={homeIcon} // Reemplaza con la ruta de tu ícono PNG o SVG
         x={296.91 - 12.5} // Posición en el eje X del ícono (cx - radio del círculo)

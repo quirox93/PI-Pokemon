@@ -1,13 +1,14 @@
 const functions = (state, payload) => {
   const filterByType = () => {
-    const filterFn = ({ tipo }) => {
-      const everyFunc = (e) => tipo.includes(e);
+    const filterFn = ({ type }) => {
+      const everyFunc = (e) => type.includes(e);
       const check = payload.every(everyFunc);
       return check;
     };
 
     return {
       filteredPokemons: state.allPokemons.filter(filterFn).sort(state.sortMode),
+      typesOn: payload,
     };
   };
 
