@@ -1,0 +1,72 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1em;
+}
+.form h3 {
+  margin: 0;
+}
+.form div {
+  margin: 0.7em;
+}
+.form div p {
+  margin: 0;
+  font-size: 0.6em;
+  position: fixed;
+  margin-top: 0.2em;
+  margin-left: 1em;
+  color: lightcoral;
+  font-weight: bold;
+}
+
+.form input {
+  margin-left: 1em;
+  width: 75%;
+  height: 20%;
+  font-size: 0.8em;
+  padding: 0.2em;
+  border-width: 0.1em;
+}
+.form input:focus {
+  border-width: 0.18em !important;
+  outline: 1em !important;
+}
+
+.form button {
+  width: 30%;
+  height: 30%;
+  font-size: 1em;
+  padding: 0;
+  margin: 0;
+
+  border-width: 0.1em;
+}
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+}
+.stats label {
+  width: 50%;
+}
+.stats input {
+  width: 10%;
+}
+.stats input {
+  width: 35% !important;
+}
+
+.icon {
+  cursor: pointer;
+}
+.icon + image {
+  opacity: 90%;
+  pointer-events: none;
+  touch-action: none;
+}
+.icon:hover + image {
+  filter: invert();
+  transition: filter 0.3s ease-in-out;
+}

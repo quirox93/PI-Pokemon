@@ -31,18 +31,23 @@
 .downStickOn {
   transform: scale(1.05) translateY(3%) rotateX(-20deg);
 }
-.homeIcon {
-  opacity: 80%;
-  transition: filter 0.3s ease-in-out;
-}
-.homeIcon:hover {
-  filter: invert();
-}
 
-.optionsIcon {
+.icon {
+  cursor: pointer;
+}
+.icon + image {
   opacity: 90%;
+  pointer-events: none;
+  touch-action: none;
+}
+.icon:hover + image {
+  filter: invert();
   transition: filter 0.3s ease-in-out;
 }
-.optionsIcon:hover {
-  filter: invert();
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
 }

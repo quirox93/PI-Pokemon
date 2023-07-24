@@ -12,7 +12,7 @@ const Cards = (props) => {
     const typeIcon1 = typeIcon[e.type[0]];
     const typeIcon2 = typeIcon[e.type[1]];
     return (
-      <Link style={{ fontSize }} to={"/detail/" + e.id} key={i}>
+      <Link to={"/detail/" + e.id} key={e.name + i}>
         <img src={e.gif || e.sprite}></img>
         <div className={s.rightContainer}>
           <p className={s.name}>{e.name}</p>
@@ -26,7 +26,7 @@ const Cards = (props) => {
   });
 
   return (
-    <div className={s.cardsContainer} style={{ width: width, height: width }}>
+    <div className={s.cardsContainer} style={{ width: width, height: width, fontSize }}>
       <div className={s.pantalla}>{mapPokemons.length ? mapPokemons : mapPokemons}</div>
     </div>
   );

@@ -2,8 +2,8 @@ import { useLayoutEffect, useRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateWidth } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import homeIcon from "./home.png";
-import optionsIcon from "./options.png";
+import homeIcon from "./icons/home.png";
+import optionsIcon from "./icons/options.png";
 const usePokedex = (props, s) => {
   const { handleRightClick, handleLeftClick } = props;
 
@@ -30,14 +30,13 @@ const usePokedex = (props, s) => {
   }, []);
   const optionsButton = (
     <Link to={"/options"}>
-      <ellipse cx={325.58} cy={398.56} className="cls-7" rx={12.66} ry={12.69} />
+      <ellipse className={"cls-7 " + s.icon} cx={325.58} cy={398.56} rx={12.66} ry={12.69} />
       <image
         xlinkHref={optionsIcon} // Reemplaza con la ruta de tu ícono PNG o SVG
         x={325.58 - 10} // Posición en el eje X del ícono (cx - radio del círculo)
         y={398.56 - 10} // Posición en el eje Y del ícono (cy - radio del círculo)
         width={20} // Ancho del ícono (2 * radio del círculo)
         height={20} // Altura del ícono (2 * radio del círculo)
-        className={s.optionsIcon}
       />
     </Link>
   );
@@ -47,7 +46,7 @@ const usePokedex = (props, s) => {
         cx={296.91}
         cy={450.71}
         r={17.38}
-        className="cls-14"
+        className={s.icon + " cls-14"}
         transform="rotate(-67.5 296.907 450.714)"
       />
       <image
@@ -56,21 +55,6 @@ const usePokedex = (props, s) => {
         y={450.71 - 12.5} // Posición en el eje Y del ícono (cy - radio del círculo)
         width={25} // Ancho del ícono (2 * radio del círculo)
         height={25} // Altura del ícono (2 * radio del círculo)
-        className={s.homeIcon}
-      />
-    </Link>
-  );
-
-  const searchButton = (
-    <Link to={"/home"}>
-      <circle cx={296.91} cy={505} r={17.38} className="cls-14" />
-      <image
-        xlinkHref={homeIcon} // Reemplaza con la ruta de tu ícono PNG o SVG
-        x={296.91 - 12.5} // Posición en el eje X del ícono (cx - radio del círculo)
-        y={450.71 - 12.5} // Posición en el eje Y del ícono (cy - radio del círculo)
-        width={25} // Ancho del ícono (2 * radio del círculo)
-        height={25} // Altura del ícono (2 * radio del círculo)
-        className={s.homeIcon}
       />
     </Link>
   );
@@ -115,7 +99,8 @@ const usePokedex = (props, s) => {
       />
     </g>
   );
-  return { ref, sticks, optionsButton, homeButton, searchButton };
+
+  return { ref, sticks, optionsButton, homeButton };
 };
 
 export default usePokedex;

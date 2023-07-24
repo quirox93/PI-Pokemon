@@ -1,9 +1,9 @@
-const { getPokemonByIdOrName } = require("../controllers");
+const { getPokemonByName } = require("../controllers");
 
 const handlerGetPokemonByName = async (req, res) => {
   try {
     const { name } = req.query;
-    const pokemon = await getPokemonByIdOrName(name);
+    const pokemon = await getPokemonByName(name);
     res.status(200).json(pokemon);
   } catch (error) {
     const status = error.response?.status || 500;

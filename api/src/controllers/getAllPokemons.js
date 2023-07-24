@@ -1,19 +1,32 @@
-const getPokemonByIdOrName = require("./getPokemonByIdOrName");
-const { pokeApi } = require("./utils");
+const { pokeApi, formatData } = require("./utils");
 const axios = require("axios");
+const { Pokemon, Type } = require("./../db");
 
 const getAllPokemons = async () => {
   const { data } = await axios.get(pokeApi + "pokemon", {
     params: {
-      limit: 21,
+      limit: 30,
       offset: 0,
     },
   });
-  const allPokemons = data.results.map(getData);
-  const allData = await Promise.all(allPokemons);
-  return allData;
+  const allData = data.results.map(getData);
+  const allOriginalPokemons = await Promise.all(allData);
+
+  const allDbPokemons = await Pokemon.findAll({ include: { model: Type, as: "type" } });
+
+  const allPokemons = allDbPokemons
+    .map((e) => {
+      const type = e.type.map((e) => e.name);
+      return { ...e.dataValues, type };
+    })
+    .concat(allOriginalPokemons);
+
+  return allPokemons;
 };
 
-const getData = (e) => getPokemonByIdOrName(e.name);
+const getData = async (e) => {
+  const { data } = await axios.get(`${pokeApi}pokemon/${e.name}`);
+  return formatData(data);
+};
 
 module.exports = getAllPokemons;

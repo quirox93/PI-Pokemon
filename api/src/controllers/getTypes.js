@@ -4,7 +4,7 @@ const { pokeApi } = require("./utils");
 
 const getTypes = async () => {
   const types = await Type.findAll();
-  return types.map((e) => e.name);
+  return types.map((e) => e.name).filter((e) => e !== "shadow" && e !== "unknown");
 };
 
 const setTypes = async () => {

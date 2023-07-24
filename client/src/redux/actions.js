@@ -1,6 +1,7 @@
 export const GET_POKEMONS = "GET_POKEMONS";
 export const GET_TYPES = "GET_TYPES";
 export const UPDATE_WIDTH = "UPDATE_WIDTH";
+export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
 export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
 export const SORT = "SORT";
 
@@ -47,6 +48,9 @@ export const sortPokemons = (payload) => {
 
 export const filterByType = (payload) => {
   return { type: FILTER_BY_TYPE, payload };
+};
+export const filterByOrigin = (payload) => {
+  return { type: FILTER_BY_ORIGIN, payload };
 };
 
 export default {

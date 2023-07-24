@@ -9,16 +9,16 @@
   transition: all 1s ease;
   background-color: white;
   position: relative;
-  width: 54%;
-  height: 54%;
-  top: 14.3%;
-  left: 50%;
-  transform: translate(-47%, 0);
+  width: 53%;
+  height: 53%;
+  top: 15%;
+  left: 25.2%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: space-around;
   justify-content: space-around;
+  box-shadow: 0 0 0 0.2em black;
 }
 
 .cardsContainer * {

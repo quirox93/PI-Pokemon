@@ -9,11 +9,14 @@ const Home = () => {
   const { filteredPokemons } = useSelector((state) => state);
 
   const [page, setPage] = useState(1);
+  const lastPage = ~~(filteredPokemons.length / 12) + 1;
   const handleLeftClick = () => {
     if (page > 1) setPage(page - 1);
   };
   const handleRightClick = () => {
-    setPage(page + 1);
+    if (page === lastPage) return;
+    const actualPage = page + 1;
+    setPage(actualPage);
   };
 
   return (
@@ -22,7 +25,7 @@ const Home = () => {
 
       <Cards allPokemons={filteredPokemons.slice(12 * (page - 1), 12 * page)} />
 
-      <MiniScreen text={"Página " + page} />
+      <MiniScreen text={`Page ${page} of ${lastPage}`} />
     </div>
   );
 };
