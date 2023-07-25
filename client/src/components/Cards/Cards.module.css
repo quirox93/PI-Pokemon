@@ -40,7 +40,7 @@
 }
 
 .pantalla a {
-  opacity: 90%;
+  opacity: 100%;
   text-decoration: none;
   background-color: seashell;
   height: 10%;
@@ -50,12 +50,14 @@
   width: 45%;
   margin: 0.2em;
   padding: 1.5%;
-  transition: all 0.5s ease;
+  box-shadow: 0 0 0 0.1em black;
+  transition: padding 0.5s ease;
+}
+.pantalla a img {
+  transition: opacity 0.5s ease;
   animation-name: smooth;
   animation-duration: 1s;
-  box-shadow: 0 0 0 0.1em black;
 }
-
 .pantalla a:hover {
   padding: 5% 1.5%;
 }
@@ -65,7 +67,7 @@
   }
 
   to {
-    opacity: 90%;
+    opacity: 100%;
   }
 }
 /*nombre del pokemon */
@@ -91,7 +93,7 @@
   display: none;
   height: 0%;
 }
-/*Necesito cambiar el display de icons a flex cuando se activa el hover de .rightContainer*/
+
 .pantalla a:hover .icons img {
   display: initial;
   transition: all ease 1s;

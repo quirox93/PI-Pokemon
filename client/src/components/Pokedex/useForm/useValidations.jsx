@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 import { getAllPokemons } from "../../../redux/actions";
 
 const URL = import.meta.env.VITE_BACKEND_URL + "/pokemons";
-const onlyLetters = /^[A-Za-z]{3,15}$/;
+const onlyLetters = /^[A-Za-z]{3,10}$/;
 const imageUrlRegex = /\.(jpeg|jpg|png|gif|bmp)$/i;
 const checkHeight = /^([1-9]|[1-9][0-9]|1[0-4][0-9]|150)$/;
 const checkWeight = /^([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|10000)$/;
 const checkStat = /^([1-9]|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])$/;
 const validations = {
-  name: (value) => (onlyLetters.test(value) ? "" : "Must be between 3 and 15 characters long"),
+  name: (value) => (onlyLetters.test(value) ? "" : "Must be between 3 and 10 characters long"),
   sprite: (value) => (imageUrlRegex.test(value) ? "" : "Invalid image URL"),
   type: (value) => (value.length > 0 ? "" : "lightcoral"),
   height: (value) => (checkHeight.test(value) ? "" : "lightcoral"),
@@ -114,6 +114,7 @@ const useValidations = (modalRef) => {
     setValues(defValues);
     setErrors(defErrors);
     setInfo("");
+    
   };
   return { info, handleClose, handleSubmit, handleChange, handleMultiSelectChange, values, errors };
 };

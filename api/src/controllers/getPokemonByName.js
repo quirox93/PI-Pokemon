@@ -1,6 +1,6 @@
 const { pokeApi, formatData } = require("./utils");
 const axios = require("axios");
-const { Pokemon, Type } = require("./../db");
+const { Pokemon } = require("./../db");
 
 const getPokemonByName = async (name) => {
   const dbPokemon = await Pokemon.findOne({

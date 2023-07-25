@@ -1,11 +1,12 @@
 const { pokeApi, formatData } = require("./utils");
 const axios = require("axios");
 const { Pokemon, Type } = require("./../db");
-
+const { DB_DEPLOY } = process.env;
+const limit = DB_DEPLOY.includes("localhost") ? 151 : 30;
 const getAllPokemons = async () => {
   const { data } = await axios.get(pokeApi + "pokemon", {
     params: {
-      limit: 30,
+      limit,
       offset: 0,
     },
   });

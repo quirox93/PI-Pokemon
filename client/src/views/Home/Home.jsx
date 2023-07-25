@@ -9,7 +9,7 @@ const Home = () => {
   const { filteredPokemons } = useSelector((state) => state);
 
   const [page, setPage] = useState(1);
-  const lastPage = ~~(filteredPokemons.length / 12) + 1;
+  const lastPage = Math.ceil(filteredPokemons.length / 12);
   const handleLeftClick = () => {
     if (page > 1) setPage(page - 1);
   };

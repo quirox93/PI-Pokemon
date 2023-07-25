@@ -37,7 +37,7 @@ const useForm = () => {
             <div>
               <input
                 placeholder="Name"
-                pattern="^[A-Za-z]{1,15}$"
+                pattern="^[A-Za-z]{1,10}$"
                 name="name"
                 value={values.name}
                 onChange={handleChange}
@@ -69,7 +69,6 @@ const useForm = () => {
               <label>Height (dm)</label>
               <input
                 style={{ backgroundColor: errors.height }}
-                type="number"
                 placeholder="1-150"
                 pattern="^([1-9]|[1-9][0-9]|1[0-4][0-9]|150)$"
                 name="height"
